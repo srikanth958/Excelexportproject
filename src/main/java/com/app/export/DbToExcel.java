@@ -23,7 +23,7 @@ import com.inno.exports.SuperExport;
 public class DbToExcel {
 
 	public  static void main(String[] args)throws Exception {
-		Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&password=9580");
+		Connection con =DriverManager.getConnection("jdbc:mysql://localhost:3306/test?user=root&password=xxxx");
 	Statement stmt=con.createStatement();
 	stmt.executeQuery("select *from test.csvs");
 	ResultSet rs=null;
@@ -41,22 +41,8 @@ public class DbToExcel {
 	cell3.setCellValue("quantity");
 	Cell cell4=row.createCell(4);
 	cell4.setCellValue("avalil");
-	//populte(rs, workbook, sheet);
-	beans bean=new beans("ram", 23, 75.87d, 87.8676f, true);
-	beans bean1=new beans("ram", 23, 75.87d, 87.8676f, true);
-	beans bean2=new beans();
-	beans bean3=new beans();
-	List<beans> bns= Arrays.asList(bean2,bean3);
-	ArrayList arr=new ArrayList();
-	@SuppressWarnings("rawtypes")
-	SuperExport excelExport=new ExcelExport<beans>(); 
-	//excelExport.Export(bean2, "check2.xlsx");
-	 //excelExport.Export(rs, "sample2.xlsx");
-	excelExport.Export(arr, "check3.xlsx");
-	
-    
-	
-	//workbook.write(fout);
+	populte(rs, workbook, sheet);
+	workbook.write(fout);
 	fout.close();
 	con.close();
 		
@@ -89,24 +75,4 @@ public class DbToExcel {
 	}
 
 }
-class beans{
-	
-	private String name;
-	private int age;
-	private double Double;
-	private float ft;
-	private boolean bool;
-	public beans() {
-		
-	}
-	public beans(String name, int age, double d, float ft, boolean bool) {
-		super();
-		this.name = name;
-		this.age = age;
-		Double = d;
-		this.ft = ft;
-		this.bool = bool;
-	}
-	
-	
-}
+
