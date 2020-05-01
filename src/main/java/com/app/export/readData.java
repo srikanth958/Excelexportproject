@@ -15,6 +15,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class readData {
 
 	public  void main(String[] args) throws Exception {
+		//passing excel sheet file path
 		FileInputStream fin=new FileInputStream(new File("C:\\Users\\Lenova\\Desktop\\bean.xlsx"));
 XSSFWorkbook workbook=new XSSFWorkbook(fin);
 XSSFSheet sheet=workbook.getSheetAt(0);
