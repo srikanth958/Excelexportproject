@@ -31,6 +31,7 @@ public class DbToExcel {
 	XSSFWorkbook workbook =new XSSFWorkbook();
 	XSSFSheet sheet=workbook.createSheet("dbData");
 	Row row=sheet.createRow(0);
+	//since i've following five columns in my db table so iam creating header with these five fields in excel sheet
 	Cell cell=row.createCell(0);
 	cell.setCellValue("name");
 	Cell cell1=row.createCell(1);
@@ -41,15 +42,17 @@ public class DbToExcel {
 	cell3.setCellValue("quantity");
 	Cell cell4=row.createCell(4);
 	cell4.setCellValue("avalil");
-	populte(rs, workbook, sheet);
+	//passing created workbook ,sheet and resultset to method
+	populate(rs, workbook, sheet);
 	workbook.write(fout);
 	fout.close();
 	con.close();
 		
 
 	}
-	public static void populte(ResultSet rs,XSSFWorkbook workbook,XSSFSheet sheet) throws SQLException {
+	public static void populate(ResultSet rs,XSSFWorkbook workbook,XSSFSheet sheet) throws SQLException {
 		int rowcount=0;
+		//this loop for writing rows data of resultset into excel sheet
 		while(rs.next()) {
 			String v1=rs.getString(1);
 			String v2=rs.getString(2);
