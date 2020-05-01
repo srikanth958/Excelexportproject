@@ -26,6 +26,7 @@ public class beanToExcel {
 		XSSFWorkbook workbook =new XSSFWorkbook();
 		XSSFSheet sheet=workbook.createSheet("beandata");
 		Row row=sheet.createRow(0);
+		//creating header in excel sheet with field names of bean
 		row.createCell(0).setCellValue("name");
 		row.createCell(1).setCellValue("age");
 		row.createCell(2).setCellValue("language");
@@ -36,6 +37,7 @@ public class beanToExcel {
 	}
 	public static void writebean(XSSFWorkbook workbook,XSSFSheet sheet,List<userBean> beans) {
 		int rows=1;
+		//writing data of each bean into excel sheet
 	for(userBean bean:beans) {
 		Row row=sheet.createRow(rows++);
 		row.createCell(0).setCellValue(bean.getName());
@@ -48,6 +50,7 @@ public class beanToExcel {
 	}
 
 }
+//this is our bean class
 class userBean {
 	String name;
 	int age;
